@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1525
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "P3_ExceltoSQLDB", "P3_ExceltoSQLDB\P3_ExceltoSQLDB.dtproj", "{B5EC7E28-A9FA-49AE-AFE4-075BAECCB53D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5EC7E28-A9FA-49AE-AFE4-075BAECCB53D}.Development|Default.ActiveCfg = Development
+		{B5EC7E28-A9FA-49AE-AFE4-075BAECCB53D}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1AC1D96-7516-4A41-AD9F-B534B1F778E9}
+	EndGlobalSection
+EndGlobal
