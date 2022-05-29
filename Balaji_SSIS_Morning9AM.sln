@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1525
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Balaji_SSIS_Morning9AM", "Balaji_SSIS_Morning9AM\Balaji_SSIS_Morning9AM.dtproj", "{016128D4-A28F-4492-85A3-BD5BE57341DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{016128D4-A28F-4492-85A3-BD5BE57341DA}.Development|Default.ActiveCfg = Development
+		{016128D4-A28F-4492-85A3-BD5BE57341DA}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C876F460-F02A-409C-8B90-CD3747B90DE3}
+	EndGlobalSection
+EndGlobal

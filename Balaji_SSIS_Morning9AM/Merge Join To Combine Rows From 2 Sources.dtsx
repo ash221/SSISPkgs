@@ -1,0 +1,1552 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/8/2022 7:42:29 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-RD5HCEV"
+  DTS:CreatorName="DESKTOP-RD5HCEV\Ashu"
+  DTS:DTSID="{E18FA225-E254-461A-AFBD-E78A8EB4A471}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Merge Join To Combine Rows From 2 Sources"
+  DTS:PackageType="5"
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{717306E0-85CA-480C-AD05-C81E2A4905AA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-RD5HCEV\PRDNODE1.AdventureWorks2019]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0EAE4F49-72BB-4F82-AC94-B734646DA1DF}"
+      DTS:ObjectName="DESKTOP-RD5HCEV\PRDNODE1.AdventureWorks2019">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-RD5HCEV\PRDNODE1;Initial Catalog=AdventureWorks2019;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{D2DD914B-9143-4A64-9632-1177FA6F3B02}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="A:\ashu files\Balaji_SSIS\EmployeePayHistory.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BusinessEntityID"
+              DTS:DTSID="{28EC06B6-2844-4112-933E-59E7FE6ED2D1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RateChangeDate"
+              DTS:DTSID="{7CA6E4DD-215A-486D-999D-BBCA67F13717}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Rate"
+              DTS:DTSID="{3A195725-E870-4E35-AB9B-6DD238EF62F2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PayFrequency"
+              DTS:DTSID="{A1D64570-7545-4C88-82AC-AE674688BDE7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ModifiedDate"
+              DTS:DTSID="{6AF85293-9C13-4D1B-AB81-56D0BD4ACD13}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{96D4A8EB-F444-48A1-973C-5A0489FD5148}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Extract Data From Multiple Sources To One Destination Using merge Join"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source RIGHT"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output]"
+                  isSorted="true"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].Columns[RateChangeDate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].ExternalColumns[RateChangeDate]"
+                      length="50"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].Columns[RateChangeDate]"
+                      name="RateChangeDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].Columns[Rate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].ExternalColumns[Rate]"
+                      length="50"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].Columns[Rate]"
+                      name="Rate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].Columns[PayFrequency]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].ExternalColumns[PayFrequency]"
+                      length="50"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].Columns[PayFrequency]"
+                      name="PayFrequency"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].ExternalColumns[RateChangeDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RateChangeDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].ExternalColumns[Rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Rate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].ExternalColumns[PayFrequency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PayFrequency" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].ExternalColumns[ModifiedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[BusinessEntityID]"
+                      cachedDataType="i4"
+                      cachedName="BusinessEntityID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[BusinessEntityID]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[NationalIDNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="NationalIDNumber"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[NationalIDNumber]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[LoginID]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="LoginID"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[LoginID]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[OrganizationNode]"
+                      cachedDataType="bytes"
+                      cachedLength="892"
+                      cachedName="OrganizationNode"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[OrganizationNode]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[OrganizationLevel]"
+                      cachedDataType="i2"
+                      cachedName="OrganizationLevel"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[OrganizationLevel]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[JobTitle]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="JobTitle"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[JobTitle]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[BirthDate]"
+                      cachedDataType="dbDate"
+                      cachedName="BirthDate"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MaritalStatus"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[MaritalStatus]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[HireDate]"
+                      cachedDataType="dbDate"
+                      cachedName="HireDate"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[SalariedFlag]"
+                      cachedDataType="bool"
+                      cachedName="SalariedFlag"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[SalariedFlag]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[VacationHours]"
+                      cachedDataType="i2"
+                      cachedName="VacationHours"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[VacationHours]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[SickLeaveHours]"
+                      cachedDataType="i2"
+                      cachedName="SickLeaveHours"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[SickLeaveHours]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Right Input].Columns[BusinessEntityID]"
+                      cachedDataType="i4"
+                      cachedName="BusinessEntityID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].Columns[BusinessEntityID]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Right Input].Columns[RateChangeDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="RateChangeDate"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].Columns[RateChangeDate]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Right Input].Columns[Rate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Rate"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].Columns[Rate]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Right Input].Columns[PayFrequency]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PayFrequency"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output].Columns[PayFrequency]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[BusinessEntityID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[NationalIDNumber]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[NationalIDNumber]"
+                      name="NationalIDNumber">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[NationalIDNumber]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[LoginID]"
+                      name="LoginID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[LoginID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[OrganizationNode]"
+                      dataType="bytes"
+                      length="892"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[OrganizationNode]"
+                      name="OrganizationNode">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[OrganizationNode]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[OrganizationLevel]"
+                      dataType="i2"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[OrganizationLevel]"
+                      name="OrganizationLevel">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[OrganizationLevel]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[JobTitle]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[JobTitle]"
+                      name="JobTitle">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[JobTitle]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[BirthDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[BirthDate]"
+                      name="BirthDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[BirthDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[MaritalStatus]"
+                      name="MaritalStatus">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[MaritalStatus]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[Gender]"
+                      name="Gender">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[Gender]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[HireDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[HireDate]"
+                      name="HireDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[HireDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[SalariedFlag]"
+                      dataType="bool"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[SalariedFlag]"
+                      name="SalariedFlag">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[SalariedFlag]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[VacationHours]"
+                      dataType="i2"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[VacationHours]"
+                      name="VacationHours">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[VacationHours]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[SickLeaveHours]"
+                      dataType="i2"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[SickLeaveHours]"
+                      name="SickLeaveHours">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[SickLeaveHours]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[ModifiedDate]"
+                      name="ModifiedDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[ModifiedDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[RateChangeDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[RateChangeDate]"
+                      name="RateChangeDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Right Input].Columns[RateChangeDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[Rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[Rate]"
+                      name="Rate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Right Input].Columns[Rate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[PayFrequency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[PayFrequency]"
+                      name="PayFrequency">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Right Input].Columns[PayFrequency]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[June9]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-RD5HCEV\PRDNODE1.AdventureWorks2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-RD5HCEV\PRDNODE1.AdventureWorks2019]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BusinessEntityID]"
+                      cachedDataType="i4"
+                      cachedName="BusinessEntityID"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[BusinessEntityID]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NationalIDNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="NationalIDNumber"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NationalIDNumber]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[NationalIDNumber]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LoginID]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="LoginID"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LoginID]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[LoginID]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OrganizationNode]"
+                      cachedDataType="bytes"
+                      cachedLength="892"
+                      cachedName="OrganizationNode"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationNode]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[OrganizationNode]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OrganizationLevel]"
+                      cachedDataType="i2"
+                      cachedName="OrganizationLevel"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationLevel]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[OrganizationLevel]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[JobTitle]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="JobTitle"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[JobTitle]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[JobTitle]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BirthDate]"
+                      cachedDataType="dbDate"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MaritalStatus"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[MaritalStatus]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HireDate]"
+                      cachedDataType="dbDate"
+                      cachedName="HireDate"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HireDate]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SalariedFlag]"
+                      cachedDataType="bool"
+                      cachedName="SalariedFlag"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalariedFlag]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[SalariedFlag]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VacationHours]"
+                      cachedDataType="i2"
+                      cachedName="VacationHours"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VacationHours]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[VacationHours]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SickLeaveHours]"
+                      cachedDataType="i2"
+                      cachedName="SickLeaveHours"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SickLeaveHours]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[SickLeaveHours]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[ModifiedDate]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RateChangeDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="RateChangeDate"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RateChangeDate]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[RateChangeDate]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Rate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Rate"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rate]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[Rate]" />
+                    <inputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PayFrequency]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PayFrequency"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PayFrequency]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output].Columns[PayFrequency]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NationalIDNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="NationalIDNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      name="LoginID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationNode]"
+                      dataType="bytes"
+                      length="892"
+                      name="OrganizationNode" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationLevel]"
+                      dataType="i2"
+                      name="OrganizationLevel" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[JobTitle]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobTitle" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HireDate]"
+                      dataType="dbDate"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalariedFlag]"
+                      dataType="bool"
+                      name="SalariedFlag" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VacationHours]"
+                      dataType="i2"
+                      name="VacationHours" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SickLeaveHours]"
+                      dataType="i2"
+                      name="SickLeaveHours" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RateChangeDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RateChangeDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Rate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PayFrequency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PayFrequency" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source LEFT"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        BusinessEntityID, NationalIDNumber, LoginID, OrganizationNode, OrganizationLevel, JobTitle, BirthDate, MaritalStatus, Gender, HireDate, SalariedFlag, VacationHours, SickLeaveHours, ModifiedDate
+FROM            HumanResources.Employee WITH (nolock)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-RD5HCEV\PRDNODE1.AdventureWorks2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-RD5HCEV\PRDNODE1.AdventureWorks2019]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output]"
+                  isSorted="true"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[NationalIDNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[NationalIDNumber]"
+                      length="15"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[NationalIDNumber]"
+                      name="NationalIDNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[LoginID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[LoginID]"
+                      length="256"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[LoginID]"
+                      name="LoginID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[OrganizationNode]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[OrganizationNode]"
+                      length="892"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[OrganizationNode]"
+                      name="OrganizationNode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[OrganizationLevel]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[OrganizationLevel]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[OrganizationLevel]"
+                      name="OrganizationLevel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[JobTitle]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[JobTitle]"
+                      length="50"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[JobTitle]"
+                      name="JobTitle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus]"
+                      length="1"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[MaritalStatus]"
+                      name="MaritalStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      length="1"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[HireDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[HireDate]"
+                      name="HireDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[SalariedFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[SalariedFlag]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[SalariedFlag]"
+                      name="SalariedFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[VacationHours]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[VacationHours]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[VacationHours]"
+                      name="VacationHours"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[SickLeaveHours]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[SickLeaveHours]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[SickLeaveHours]"
+                      name="SickLeaveHours"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[NationalIDNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="NationalIDNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      name="LoginID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[OrganizationNode]"
+                      dataType="bytes"
+                      length="892"
+                      name="OrganizationNode" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[OrganizationLevel]"
+                      dataType="i2"
+                      name="OrganizationLevel" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[JobTitle]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobTitle" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      dataType="dbDate"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[SalariedFlag]"
+                      dataType="bool"
+                      name="SalariedFlag" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[VacationHours]"
+                      dataType="i2"
+                      name="VacationHours" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[SickLeaveHours]"
+                      dataType="i2"
+                      name="SickLeaveHours" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[NationalIDNumber]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[NationalIDNumber]"
+                      name="NationalIDNumber" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[LoginID]"
+                      name="LoginID" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[OrganizationNode]"
+                      dataType="bytes"
+                      length="892"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[OrganizationNode]"
+                      name="OrganizationNode" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[OrganizationLevel]"
+                      dataType="i2"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[OrganizationLevel]"
+                      name="OrganizationLevel" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[JobTitle]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[JobTitle]"
+                      name="JobTitle" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[MaritalStatus]"
+                      name="MaritalStatus" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                      name="HireDate" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[SalariedFlag]"
+                      dataType="bool"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[SalariedFlag]"
+                      name="SalariedFlag" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[VacationHours]"
+                      dataType="i2"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[VacationHours]"
+                      name="VacationHours" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[SickLeaveHours]"
+                      dataType="i2"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[SickLeaveHours]"
+                      name="SickLeaveHours" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join.Paths[Flat File Source Output]"
+              endId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Right Input]"
+              name="Flat File Source Output"
+              startId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join.Paths[Merge Join Output]"
+              endId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Merge Join Output"
+              startId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join.Paths[OLE DB Source Output]"
+              endId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join.Inputs[Merge Join Left Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="446,42"
+          Id="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join"
+          TopLeft="506,76" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="185,42"
+          Id="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Flat File Source RIGHT"
+          TopLeft="620,59" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT"
+          TopLeft="162,58" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\Merge Join"
+          TopLeft="452,179" />
+        <EdgeLayout
+          Id="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join.Paths[OLE DB Source Output]"
+          TopLeft="250.5,100">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="266.5,79"
+              Start="0,0"
+              End="266.5,71.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.5"
+                    Point2="0,39.5"
+                    Point3="4,39.5" />
+                  <mssgle:LineSegment
+                    End="262.5,39.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="262.5,39.5"
+                    Point2="266.5,39.5"
+                    Point3="266.5,43.5" />
+                  <mssgle:LineSegment
+                    End="266.5,71.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join.Paths[Flat File Source Output]"
+          TopLeft="712.5,101">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-175.166666666667,78"
+              Start="0,0"
+              End="-175.166666666667,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.2310030395137" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.2310030395137"
+                    Point2="0,46.2310030395137"
+                    Point3="-4,46.2310030395137" />
+                  <mssgle:LineSegment
+                    End="-171.166666666667,46.2310030395137" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-171.166666666667,46.2310030395137"
+                    Point2="-175.166666666667,46.2310030395137"
+                    Point3="-175.166666666667,50.2310030395137" />
+                  <mssgle:LineSegment
+                    End="-175.166666666667,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination"
+          TopLeft="404,283" />
+        <EdgeLayout
+          Id="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join.Paths[Merge Join Output]"
+          TopLeft="517,221">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-27.5,62"
+              Start="0,0"
+              End="-27.5,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27"
+                    Point2="0,31"
+                    Point3="-4,31" />
+                  <mssgle:LineSegment
+                    End="-23.5,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-23.5,31"
+                    Point2="-27.5,31"
+                    Point3="-27.5,35" />
+                  <mssgle:LineSegment
+                    End="-27.5,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Source LEFT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Extract Data From Multiple Sources To One Destination Using merge Join\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
